@@ -1,9 +1,11 @@
 ## Consts vs. Readonly
 
 Const is not a variable. Const is initialized during a compilation time. Always one value. Consts are static.
+
 Readonly is a variable. Initialized during runtime during initialization or in ctor. Can have multiple value depending on ctor.
 
 Readonly can be hack-changed via reflection.
+
 Example:
 ```
 class TestClass
@@ -73,6 +75,7 @@ class Program
 ## IEquatable<T> and IEqualityComparer<T>
 
 `IEquatable<T>` is like generic Equals(). Made for improving performance. Used by generic collections.
+
 `IEqualityComparer<T>` is like `IEquatable<T>` but separated from the exact class.
 
 ## ICloneable
@@ -82,6 +85,7 @@ One method for cloning objects. But this interface is not used in common because
 ## IConvertable
 
 Contains methods for changing types to some other simple types. Used by conversion.
+
 Methods like ToByte(), ToChar(), etc.
 
 It uses IFormatProvider. This interface has method GetFormat which return some object which formats something depending of input type.
@@ -89,18 +93,23 @@ It uses IFormatProvider. This interface has method GetFormat which return some o
 ## IComparable, IComparable<T> and IComparer<T>
 
 `IComparable` has one method which returns signum value when comparing two object/values. Used mostly by sorting.
+
 `IComparer<T>` is like `IComparable<T>` but separated from the exact class.
 
 ## What's immutability?
 
 State of object can't be changed after initialization. By this, the object is thread safe.
+
 Moreover, we have a copy after each operation.
+
 Classes and structs are not immutable by default.
+
 Structs should be immutable because it's easy to make a mistake while executing some method with this struct as a param. Then we have to add `ref`.
 
 ## What is string interning?
 
 Interning pool is a string pull in the whole app. A little bit flighweitght patter.
+
 By default every literal string goes to the interning pool. Every literal string is the same and unique.
 
 Example:
@@ -122,7 +131,9 @@ class Program
 ## What is boxing and unboxing?
 
 It's a change from value type to reference type so object or interface. And vice versa.
+
 Used to fulfil the polymorphism and in non generic collections.
+
 It's not efficient because it makes new references on heaps.
 
 Example:
@@ -145,7 +156,9 @@ static void Main(string[] args)
 ## What is an anonymous method?
 
 Anonymous method is a method with body but without name.
+
 Assigned to delegete types by the `delegate` keyword or lambda.
+
 Having the `delegate` we can ommit parameters but we can't do that having lambdas.
 
 Example:
@@ -180,7 +193,9 @@ static void Main(string[] args)
 ## What is an expression tree?
 
 It's a structure which represents some logic in a tree form. Every expression is a tree node.
+
 Made by `Expression` class from LINQ.
+
 Example:
 ```
 class Program
@@ -222,21 +237,25 @@ class Program
 ## What is dynamic keyword?
 
 It makes a variable where the type check is omitted during compilation. Type is checked when the variable is used. So late binding.
+
 Helpful when working with COM objects.
 
 ## What's late binding and early binding?
 
 Early - Type and signature are checked during compilation time.
+
 Late - Type and signatures are not checked during compilation time. Those are checked during runtime when used. Could end with some error that something is missing in the variable.
 
 ## What's reflection?
 
 Reflection is an ability to read own metadata. By reflection we can have data about types, assemblies, modules, attributes, etc.
+
 Example: Execute some private method.
 
 ## What's the Activator class?
 
 A static class which creates new local or remote objects or gets references to remote objects.
+
 Remote here means another AppDomain or COM.
 
 Example:
@@ -263,6 +282,7 @@ class Program
 ## What's the var key word?
 
 Non formal notation of some type. Compiler is 'guessing' a type when compiling first assignment.
+
 `var` is not `dynamic` - all the time a variable is strongly typed.
 
 `var` has to be used when working with anonymous types. Anonymous types are also strongly typed.
@@ -311,7 +331,9 @@ class Program
 ## Anonymous types, what are they?
 
 Anonumous types is a mechanism of making types and class inderectly with read only properties.
+
 Can be assigned to `object`, `var` and `dynamic`.
+
 Anonymous type name is made by the compiler.
 
 If there are 2 anonymous types with the same propertes in the same order then it will be one type generated.
@@ -343,7 +365,9 @@ static void Main(string[] args)
 ## What's the delegate?
 
 A method pointer. Delegate is also a reference type.
+
 Can be binded together by the Delegate.Combine method. When one execution fails then everything fails.
+
 Executed on the same caller thread.
 
 Example:
@@ -381,6 +405,7 @@ static void Main(string[] args)
 Events are just abstraction made on delegates. A client can add or remove delegates to an event. It's similar to .NET property.
 
 Events can have `add` and `remove` accessors. Then you can change a logic of adding and removing delegates.
+
 Having `add` and `remove` you can't directly invoke the event.
 
 You can have events in interfaces but not delegates.
@@ -469,7 +494,9 @@ class Program
 ## What is a closure?
 
 If some anonymous method uses some variable which is outside its body then a closure is made.
+
 It's a type generated by compiler and the outside variable will be assigned as field before making the execution.
+
 Having this, if you change the outside variable before triggering the anonymous method then during the execution the value will be correct.
 
 Example:
@@ -492,7 +519,9 @@ The easiest way is to use the `BinaryFormatter` but the type has to be serailzab
 ## What are generic constraints?
 
 Generics looks like passing types as definition parameters.
+
 Having that you can make a collection without boxing/unboxing and with fulfiling abstraction.
+
 Example: `List<T>`
 
 Constraints:
@@ -506,7 +535,9 @@ Constraints:
 ## What's the difference between explicit and implicit interface implementation?
 
 Implicit makes the method is public and it covers the interface method.
+
 Explicit is private for the implementing type.
+
 If there are 2 different interfaces with methods with the same name then during implementation some of them has to be explicit.
 
 Example:
@@ -610,7 +641,9 @@ class Program
 ## Differences between reference types and value types
 
 Reference typed objects are put on heaps. So reference is a pointer.
+
 Value types don't have finalizers. Value types can implement interfaces but no inheritance.
+
 If value types are passed to methods then copies are made. You can use `ref` or `out` so then address will be passed instead.
 
 Strings are immutable reference types. Nullables are value types.
@@ -652,11 +685,13 @@ class Program
 Union joins distinct elements (SQL union) but concat every element (SQL union all)
 
 First returns first element. If empty collection then exception.
+
 Single return first element. If empty collection or found multiple elements having the same predicate then exception.
 
 Select works on single elements in a collections but SelectMany wants collection of collections and then it flattens results.
 
 Cast casts all elements to provided type. If some type doesn't match then exception.
+
 OfType filters elements based on provided type.
 
 Example:
@@ -729,6 +764,7 @@ class Program
 ## Time complexity for hash search / binary search
 
 For hashtables it's like O(1).
+
 For binary search it's O(log n).
 
 ## What is LINQ?
@@ -740,11 +776,13 @@ Having one representation it is similar to SQL.
 ## Differences between IEnumerable and IQueryable?
 
 `IEnumerable` - Iterator pattern. 2 methods: Current() and MoveNext(). Executes on client side.
+
 `IQueryable` - Has `IQueryProvider` which uses Expression tree. Executes on server side.
 
 ## What's the covariance and contravariance?
 
 They describes casting of objects having generic interfaces and delegates.
+
 Two key words:
 - `in` - contravariance
 - `out` - covariance
@@ -752,6 +790,7 @@ Two key words:
 Can't use in generic classes.
 
 Contravariance is a casting to more generic type.
+
 Covariance is a casting to more specific type.
 
 Example:
@@ -807,6 +846,7 @@ class Program
 ## How generics works in run-time
 
 If the generic type is a value type then there will be made separated, JITed typed for every generic type passed.
+
 Similar to tempaltes in C++ so `List<int>` and `List<byte>` will be 2 separated compiled types.
 
 If generic type is a reference type then there will be `object` like references casted in runtime.
@@ -816,6 +856,7 @@ If generic type is a reference type then there will be `object` like references 
 Lazy loading. `yield` makes an interator implementation automatically.
 
 `yield return value` - Sets the value as a current one.
+
 `yield break` - Stops the iteration.
 
 The function has to return `IEnumerable<T>` or `IEnumerator<T>`.
