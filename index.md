@@ -1,6 +1,6 @@
 # Top interview questions
 
-- [.OOP](oop.md)
+- [OOP](oop.md)
 - [.NET](dotNet.md)
 - [.NET collections](dotNetCollections.md)
 - [.NET memory management](dotNetMem.md)
