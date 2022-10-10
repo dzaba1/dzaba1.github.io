@@ -69,10 +69,10 @@ class Program
 
 - ToString() - By default full type name.
 - Finalize() - Destructor. Executed by GC. By default it does nothing.
-- GetHashCode() - Returns unique int value for every class/object. Used mostly by hash tables. By default it doesn't guarantee uniquenes.
+- GetHashCode() - Returns unique int value for every class/object. Used mostly by hash tables. By default it doesn't guarantee uniqueness.
 - Equals() - Checks if the passed object is 'the same'. By default for reference types it checks the pointer (object address). By default for value types it firsts checks the type and then byte per byte.
 
-## IEquatable<T> and IEqualityComparer<T>
+## `IEquatable<T>` and `IEqualityComparer<T>`
 
 `IEquatable<T>` is like generic Equals(). Made for improving performance. Used by generic collections.
 
@@ -90,7 +90,7 @@ Methods like ToByte(), ToChar(), etc.
 
 It uses IFormatProvider. This interface has method GetFormat which return some object which formats something depending of input type.
 
-## IComparable, IComparable<T> and IComparer<T>
+## IComparable, `IComparable<T>` and `IComparer<T>`
 
 `IComparable` has one method which returns signum value when comparing two object/values. Used mostly by sorting.
 
@@ -108,7 +108,7 @@ Structs should be immutable because it's easy to make a mistake while executing 
 
 ## What is string interning?
 
-Interning pool is a string pull in the whole app. A little bit flighweitght patter.
+Interning pool is a string pull in the whole app. A little bit lightweight patter.
 
 By default every literal string goes to the interning pool. Every literal string is the same and unique.
 
@@ -157,9 +157,9 @@ static void Main(string[] args)
 
 Anonymous method is a method with body but without name.
 
-Assigned to delegete types by the `delegate` keyword or lambda.
+Assigned to delegate types by the `delegate` keyword or lambda.
 
-Having the `delegate` we can ommit parameters but we can't do that having lambdas.
+Having the `delegate` we can omit parameters but we can't do that having lambdas.
 
 Example:
 ```
@@ -178,7 +178,7 @@ class Program
 
 ## What is a lambda expression?
 
-Basic lambda is an anonomous method written in a different form. Used by delegates or for making Expression trees.
+Basic lambda is an anonymous method written in a different form. Used by delegates or for making Expression trees.
 
 Example:
 ```
@@ -330,13 +330,13 @@ class Program
 
 ## Anonymous types, what are they?
 
-Anonumous types is a mechanism of making types and class inderectly with read only properties.
+Anonymous types is a mechanism of making types and class indirectly with read only properties.
 
 Can be assigned to `object`, `var` and `dynamic`.
 
 Anonymous type name is made by the compiler.
 
-If there are 2 anonymous types with the same propertes in the same order then it will be one type generated.
+If there are 2 anonymous types with the same properties in the same order then it will be one type generated.
 
 They have GetHashCode and Equals implemented. They compare all properties.
 
@@ -366,7 +366,7 @@ static void Main(string[] args)
 
 A method pointer. Delegate is also a reference type.
 
-Can be binded together by the Delegate.Combine method. When one execution fails then everything fails.
+Can be bind together by the Delegate.Combine method. When one execution fails then everything fails.
 
 Executed on the same caller thread.
 
@@ -449,7 +449,7 @@ class Program
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error in handler occured: " + ex.Message);
+                    Console.WriteLine("Error in handler occurred: " + ex.Message);
                 }
             }
         }
@@ -514,13 +514,13 @@ static void Main(string[] args)
 
 ## How to perform a deep copy of any object automatically?
 
-The easiest way is to use the `BinaryFormatter` but the type has to be serailzable.
+The easiest way is to use the `BinaryFormatter` but the type has to be serializable.
 
 ## What are generic constraints?
 
 Generics looks like passing types as definition parameters.
 
-Having that you can make a collection without boxing/unboxing and with fulfiling abstraction.
+Having that you can make a collection without boxing/unboxing and with fulfilling abstraction.
 
 Example: `List<T>`
 
@@ -529,7 +529,7 @@ Constraints:
 - `T:class` - The `T` type has to be a reference type
 - `T:new()` - The `T` type has to have a parameterless ctor.
 - `T:new()` - The `T` type has to have a parameterless ctor.
-- `T:<base class or interface name>` - The `T` type has to implement provided interface or dervie from provided class.
+- `T:<base class or interface name>` - The `T` type has to implement provided interface or derive from provided class.
 - `T:U` - The `T` type has to implement generic `U` or derive from generic `U`.
 
 ## What's the difference between explicit and implicit interface implementation?
@@ -761,12 +761,6 @@ class Program
 }
 ```
 
-## Time complexity for hash search / binary search
-
-For hashtables it's like O(1).
-
-For binary search it's O(log n).
-
 ## What is LINQ?
 
 Language INtegrated Query - LINQ extends the language by the addition of query expressions, which are akin to SQL statements, and can be used to conveniently extract and process data from arrays, enumerable classes, XML documents, relational databases, and third-party data sources.
@@ -847,13 +841,13 @@ class Program
 
 If the generic type is a value type then there will be made separated, JITed typed for every generic type passed.
 
-Similar to tempaltes in C++ so `List<int>` and `List<byte>` will be 2 separated compiled types.
+Similar to templates in C++ so `List<int>` and `List<byte>` will be 2 separated compiled types.
 
 If generic type is a reference type then there will be `object` like references casted in runtime.
 
 ## What does yield keyword do?
 
-Lazy loading. `yield` makes an interator implementation automatically.
+Lazy loading. `yield` makes an iterator implementation automatically.
 
 `yield return value` - Sets the value as a current one.
 
@@ -899,10 +893,10 @@ class Program
         }
         Console.WriteLine();
         Console.WriteLine("Printing enumerator...");
-        var iterarotor = GetEnumerator(4);
-        while (iterarotor.MoveNext())
+        var iterator = GetEnumerator(4);
+        while (iterator.MoveNext())
         {
-            Console.WriteLine(iterarotor.Current);
+            Console.WriteLine(iterator.Current);
         }
         Console.ReadKey();
     }
