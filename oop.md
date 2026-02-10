@@ -1,3 +1,5 @@
+# OOP
+
 ## OOP principles
 
 - Encapsulation - The internal state of objects should be hidden. So it means that only accessible methods should change it.

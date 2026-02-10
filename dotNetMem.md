@@ -1,3 +1,5 @@
+# .NET memory management
+
 ## What happens if exception is thrown inside of a using block?
 
 Nothing bad. It is compiled as try/finally. So Dispose is all the time fired.
