@@ -111,40 +111,10 @@ Usually we add Async to method name.
 ## How async/await works
 
 Function coloring based on Task usually. But you can await anything by duck typing.
-Example:
-```
-class Program
-{
-    private class MyTask : INotifyCompletion
-    {
-        public MyTask GetAwaiter()
-        {
-            return this;
-        }
 
-        public bool IsCompleted => true;
+It creates a state machine in 90% similar to `yield`
 
-        public void OnCompleted(Action continuation)
-        {
-            
-        }
-
-        public void GetResult()
-        {
-
-        }
-    }
-
-    public async Task Test()
-    {
-        var myTask = new MyTask();
-
-        await myTask;
-    }
-}
-```
-
-TODO
+My implementation: https://github.com/dzaba1/MyAsyncAwait
 
 ## What are task create options?
 
@@ -219,7 +189,7 @@ It's better to use the Thread object when:
 - To dynamically change priorities of threads.
 - The operation will be really really long.
 
-## What’s the apartment state?
+## What's the apartment state?
 
 It controls access to COM objects. Some of them are not thread safe. COM objects sit in that apartment. Also threads sit in that apartment. A process can have multiple apartments.
 
@@ -229,6 +199,10 @@ The apartment has only one thread which proxies to COM objects. Message pump is 
 
 - MTA - Multi-threaded apartment
 Multiple threads proxies to COM objects. Every object then should be thread safe.
+
+## What's the ExecutionContext?
+
+It's kind of key/value pair container with thread properies like security context, culture, and `AsyncLocal` values. It can be passed further for other threads and async continations.
 
 # Concurrent collections
 

@@ -359,7 +359,7 @@ Non-clustered indexes have one row in sys.partitions with index_id > 0 for every
 
 In a table there can be max 999 non-clustered indexes.
 
-## What’s the index rebuild and recreation?
+## What's the index rebuild and recreation?
 
 When there are updates, inserts, deletes then SQL Server tries to reorganize indexes.
 After some time there can be the fragmentation phenomena. It happens when pages in indexes which are sorted logically don't match physical data layout on a disc.
