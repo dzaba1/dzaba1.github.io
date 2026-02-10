@@ -114,7 +114,11 @@ Function coloring based on Task usually. But you can await anything by duck typi
 
 It creates a state machine in 90% similar to `yield`
 
-My implementation: https://github.com/dzaba1/MyAsyncAwait
+My implementation: [https://github.com/dzaba1/MyAsyncAwait](https://github.com/dzaba1/MyAsyncAwait)
+
+## How `.ConfigureAwait(false)` works?
+
+I described it in: [https://github.com/dzaba1/ConfigureAwait](https://github.com/dzaba1/ConfigureAwait)
 
 ## What are task create options?
 
